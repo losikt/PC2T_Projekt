@@ -8,7 +8,7 @@ public class InputChecker {
         }
         catch(Exception e)
         {
-            System.out.println("\nZadej cislo!! :");
+            System.out.print("Zadej cislo!! :");
             input.nextLine();
             cislo =getInt(input);
         }
