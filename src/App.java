@@ -18,7 +18,7 @@ public class App {
             "[10]  Přidání filmu souborem\n"+
             "[0] Konec\n"+
             "Vyber akci: ");
-            volba = sc.nextInt();
+            volba = InputChecker.getInt(sc);
         }while(volba !=0);
     }
 }
