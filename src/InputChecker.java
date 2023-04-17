@@ -15,5 +15,4 @@ public class InputChecker {
         return cislo;
     }
 
-
 }
