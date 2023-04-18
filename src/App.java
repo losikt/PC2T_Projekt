@@ -19,8 +19,8 @@ public class App {
             "[8]   Výpis filmů podle herců/animátorů\n"+
             "[9]   Uložení informací o filmu\n"+
             "[10]  Přidání filmu souborem\n"+
-            "[0] Konec\n"+
-            "Vyber akci: ");
+            "[0]   Konec\n"+
+            "    Vyber akci: ");
             volba = InputChecker.getInt(sc);
         while(volba !=0){
             switch(volba){
@@ -28,11 +28,11 @@ public class App {
                 break;
                 case 1:
                 System.out.print(
-                    "Vyber druh filmu\n"+
+                    "    Vyber druh filmu\n"+
                     "[1]   Hraný film\n"+
                     "[2]   Animovný film\n"+
                     "[0]   Zpět\n"+
-                    "Vyber akci: ");
+                    "    Vyber akci: ");
                 volba = InputChecker.getInt(sc);
                 String nazev;
                 String reziser;
@@ -44,25 +44,25 @@ public class App {
                     case 0:
                     break;
                     case 1:
-                    System.out.print("Zadej název filmu: ");
+                    System.out.print("    Zadej název filmu: ");
                     nazev = sc.nextLine();
-                    System.out.print("Zadej jméno režiséra filmu: ");
+                    System.out.print("    Zadej jméno režiséra filmu: ");
                     reziser = sc.nextLine();
-                    System.out.print("Zadej rok vydání filmu: ");
+                    System.out.print("    Zadej rok vydání filmu: ");
                     rokVydani=InputChecker.getInt(sc);
                     System.out.print(
-                    "Chceš zadat seznam herců?\n"+
+                    "    Chceš zadat seznam herců?\n"+
                     "[1]   Ano\n"+
                     "[2]   Ne\n"+
-                    "Vyber akci: ");
+                    "    Vyber akci: ");
                     volba=InputChecker.getInt(sc);
                     if(volba==1){
                         List<String> seznamhercu=new ArrayList<String>();
-                        System.out.print("Zadej jméno herce (pro ukončení zápisu zadej 0)");
+                        System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
                         herec = sc.nextLine();
                         while(!herec.equals("0")){
                             seznamhercu.add(herec);
-                            System.out.print("Zadej jméno herce (pro ukončení zápisu zadej 0)");
+                            System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
                             herec = sc.nextLine();
                         }
                         hraneFilmy.add(new FilmHrany(nazev, reziser, rokVydani, seznamhercu)) ;
@@ -73,27 +73,27 @@ public class App {
                     }
                     break;
                     case 2:
-                    System.out.print("Zadej název filmu: ");
+                    System.out.print("    Zadej název filmu: ");
                     nazev = sc.nextLine();
-                    System.out.print("Zadej jméno režiséra filmu: ");
+                    System.out.print("    Zadej jméno režiséra filmu: ");
                     reziser = sc.nextLine();
-                    System.out.print("Zadej rok vydání filmu: ");
+                    System.out.print("    Zadej rok vydání filmu: ");
                     rokVydani=InputChecker.getInt(sc);
-                    System.out.print("Zadej dopručený věk diváka filmu: ");
+                    System.out.print("    Zadej dopručený věk diváka filmu: ");
                     doporucenyVek=InputChecker.getInt(sc);
                     System.out.print(
-                    "Chceš zadat seznam animátorů?\n"+
+                    "    Chceš zadat seznam animátorů?\n"+
                     "[1]   Ano\n"+
                     "[2]   Ne\n"+
-                    "Vyber akci: ");
+                    "    Vyber akci: ");
                     volba=InputChecker.getInt(sc);
                     if(volba==1){
                         List<String> seznamhercu=new ArrayList<String>();
-                        System.out.print("Zadej jméno animátora (pro ukončení zápisu zadej 0)");
+                        System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
                         herec = sc.nextLine();
-                        while(herec!="0"){
+                        while(!herec.equals("0")){
                             seznamhercu.add(herec);
-                            System.out.print("Zadej jméno animátora (pro ukončení zápisu zadej 0)");
+                            System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
                             herec = sc.nextLine();
                         }
                         animovaneFilmy.add(new FilmAnimovany(nazev, reziser, rokVydani, seznamhercu,doporucenyVek)) ;
@@ -106,7 +106,7 @@ public class App {
                 break;
                 case 2:
 
-                    System.out.print("Zadej název filmu: ");
+                    System.out.print("    Zadej název filmu: ");
                     nazev=sc.nextLine();
                     int i = 0;
                     int nalezeno = 0;
@@ -133,10 +133,51 @@ public class App {
 
                         break;
                         case 2:
+                            System.out.print(
+                                    "[1]   Upravit název\n"+
+                                    "[2]   Upravit režiséra\n"+
+                                    "[3]   Upravit rok vydání\n"+
+                                    "[4]   Upravit seznam herců\n"+
+                                    "[5]   Upravit hodnocení\n"+
+                                    "[6]   Upravit Doporučný věk\n"+
+                                    "[0]   Hotovo\n"+
+                                    "    Vyber akci: ");
+                                volba=InputChecker.getInt(sc);
+                            while(volba!=0){
+                                switch(volba){
+                                    case 1:
+                                    
+                                    break;
+                                    case 2:
 
+                                    break;
+                                    case 3:
+
+                                    break;
+                                    case 4:
+
+                                    break;
+                                    case 5:
+
+                                    break;
+                                    case 6:
+
+                                    break;
+                                }
+                                System.out.print(
+                                    "[1]   Upravit název\n"+
+                                    "[2]   Upravit režiséra\n"+
+                                    "[3]   Upravit rok vydání\n"+
+                                    "[4]   Upravit seznam herců\n"+
+                                    "[5]   Upravit hodnocení\n"+
+                                    "[6]   Upravit Doporučný věk\n"+
+                                    "[0]   Hotovo\n"+
+                                    "    Vyber akci: ");
+                                volba=InputChecker.getInt(sc);
+                            }
                         break;
                         case 0:
-
+                            System.out.println("    Film nenalezen");
                         break;
                     }
 
@@ -178,8 +219,8 @@ public class App {
             "[8]   Výpis filmů podle herců/animátorů\n"+
             "[9]   Uložení informací o filmu\n"+
             "[10]  Přidání filmu souborem\n"+
-            "[0] Konec\n"+
-            "Vyber akci: ");
+            "[0]   Konec\n"+
+            "    Vyber akci: ");
             volba = InputChecker.getInt(sc);
         }
     }

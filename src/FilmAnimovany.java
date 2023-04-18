@@ -26,13 +26,13 @@ public class FilmAnimovany extends Film{
     @Override
     public String filmToString()
     {
-        String herci = "\nSeznam herců: \n";
+        String herci = "\n    Seznam herců: \n";
         if(this.SeznamHercu!=null){
             for (String jmeno : this.SeznamHercu) {
-                herci+=jmeno+"\n";
+                herci+="    "+jmeno+"\n";
             }
         }
-        return(super.filmToString()+herci+"Doporučený věk: "+this.DoporucenyVek);
+        return(super.filmToString()+herci+"    Doporučený věk: "+this.DoporucenyVek);
     }
 
 }

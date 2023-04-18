@@ -19,9 +19,9 @@ public abstract class Film {
     public String filmToString()
     {
         return(
-        "Název: "+this.Nazev+
-        "\nRežisér: "+this.Reziser+
-        "\nRok vydání: "+ this.RokVydani
+        "    Název: "+this.Nazev+
+        "\n    Režisér: "+this.Reziser+
+        "\n    Rok vydání: "+ this.RokVydani
         );
     }
 }
