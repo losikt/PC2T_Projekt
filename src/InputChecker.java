@@ -5,6 +5,7 @@ public class InputChecker {
         int cislo = 0;
         try{
             cislo = input.nextInt();
+            input.nextLine();
         }
         catch(Exception e)
         {
