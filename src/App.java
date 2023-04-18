@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        List<FilmAnimovany> animovaneFilmy = new ArrayList<FilmAnimovany>();
+        List<FilmHrany> hraneFilmy = new ArrayList<FilmHrany>();
         int volba;
         Scanner sc = new Scanner(System.in);
         System.out.print(
@@ -58,15 +60,16 @@ public class App {
                         List<String> seznamhercu=new ArrayList<String>();
                         System.out.print("Zadej jméno herce (pro ukončení zápisu zadej 0)");
                         herec = sc.nextLine();
-                        while(herec!="0"){
+                        while(!herec.equals("0")){
                             seznamhercu.add(herec);
                             System.out.print("Zadej jméno herce (pro ukončení zápisu zadej 0)");
                             herec = sc.nextLine();
                         }
-                        FilmHrany suiii = new FilmHrany(nazev, reziser, rokVydani, seznamhercu) ;
+                        hraneFilmy.add(new FilmHrany(nazev, reziser, rokVydani, seznamhercu)) ;
+                        System.out.println( hraneFilmy.get(0).filmToString());
                     }
                     else{
-                        FilmHrany suiii = new FilmHrany(nazev, reziser, rokVydani);
+                        hraneFilmy.add(new FilmHrany(nazev, reziser, rokVydani));
                     }
                     break;
                     case 2:
@@ -93,16 +96,51 @@ public class App {
                             System.out.print("Zadej jméno animátora (pro ukončení zápisu zadej 0)");
                             herec = sc.nextLine();
                         }
-                        FilmAnimovany suiii = new FilmAnimovany(nazev, reziser, rokVydani, seznamhercu,doporucenyVek) ;
+                        animovaneFilmy.add(new FilmAnimovany(nazev, reziser, rokVydani, seznamhercu,doporucenyVek)) ;
                     }
                     else{
-                        FilmAnimovany suiii = new FilmAnimovany(nazev, reziser, rokVydani,doporucenyVek);
+                        animovaneFilmy.add(new FilmAnimovany(nazev, reziser, rokVydani,doporucenyVek));
                     }
                     break;
                 }
                 break;
                 case 2:
-                
+
+                    System.out.print("Zadej název filmu: ");
+                    nazev=sc.nextLine();
+                    int i = 0;
+                    int nalezeno = 0;
+                    for (FilmHrany film : hraneFilmy) {
+                        if(film.getNazev()==nazev){
+                            nalezeno = 1;
+                            break;
+                        }
+                        i++;
+                    }
+                    if(nalezeno==0){
+                        i = 0;
+                        for (FilmAnimovany film : animovaneFilmy) {
+                            if(film.getNazev()==nazev){
+                                nalezeno = 2;
+                                break;
+                            }   
+                            i++;
+                        }
+                    }
+                    switch(nalezeno)
+                    {
+                        case 1:
+
+                        break;
+                        case 2:
+
+                        break;
+                        case 0:
+
+                        break;
+                    }
+
+
                 break;
                 case 3:
                 

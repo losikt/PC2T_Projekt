@@ -16,4 +16,17 @@ public class FilmHrany extends Film{
         this.SeznamHercu= seznamHercu;
         this.Hodnoceni = hodnoceni;
     }
+
+    @Override
+    public String filmToString()
+    {
+        String herci = "\nSeznam herců: \n";
+        if(SeznamHercu!=null){
+            for (String jmeno : this.SeznamHercu) {
+                herci+=jmeno+"\n";
+            }
+        }
+        return(super.filmToString()+herci);
+    }
+    
 }
