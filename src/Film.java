@@ -12,4 +12,16 @@ public abstract class Film {
         this.Reziser = reziser;
         this.RokVydani = rokVydani;
     }
+    public String getNazev()
+    {
+        return this.Nazev;
+    }
+    public String filmToString()
+    {
+        return(
+        "Název: "+this.Nazev+
+        "\nRežisér: "+this.Reziser+
+        "\nRok vydání: "+ this.RokVydani
+        );
+    }
 }

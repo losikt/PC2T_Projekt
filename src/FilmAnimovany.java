@@ -22,5 +22,18 @@ public class FilmAnimovany extends Film{
         this.Hodnoceni = hodnoceni;
         this.DoporucenyVek = doporucenyVek;
     }
+
+    @Override
+    public String filmToString()
+    {
+        String herci = "\nSeznam herců: \n";
+        if(this.SeznamHercu!=null){
+            for (String jmeno : this.SeznamHercu) {
+                herci+=jmeno+"\n";
+            }
+        }
+        return(super.filmToString()+herci+"Doporučený věk: "+this.DoporucenyVek);
+    }
+
 }
 
