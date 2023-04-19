@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Scanner;
 
 public class FilmHrany extends Film{
     List<String>SeznamHercu;
@@ -27,6 +28,27 @@ public class FilmHrany extends Film{
             }
         }
         return(super.filmToString()+herci);
+    }
+
+    public List<String> getSeznamHercu() {
+        return SeznamHercu;
+    }
+
+    public void setSeznamHercu(List<String> seznamHercu) {
+        this.SeznamHercu = seznamHercu;
+    }
+
+    public int getHodnoceni() {
+        return Hodnoceni;
+    }
+
+    public void setHodnoceni(Scanner sc) {
+        System.out.print("Zadej hodnoceni (0-5): ");
+        int hodnoceni = InputChecker.getInt(sc);
+        if(hodnoceni <6 && hodnoceni >-1)
+        this.Hodnoceni = hodnoceni;
+        else
+        setHodnoceni(sc);
     }
     
 }
