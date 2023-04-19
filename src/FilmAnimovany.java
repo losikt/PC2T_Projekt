@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class FilmAnimovany extends Film{
     private int Hodnoceni;
     private int DoporucenyVek;
+    private String SlovniHodnoceni;
     List<String> SeznamHercu;
 
     public FilmAnimovany(String nazev,String reziser, int rokVydani, int doporucenyVek){
@@ -65,5 +66,14 @@ public class FilmAnimovany extends Film{
         this.DoporucenyVek = doporucenyVek;
     }
 
+    public String getSlovniHodnoceni()
+    {
+        return this.SlovniHodnoceni;
+    }
+
+    public void setSlovniHodnoceni(String slovniHodnoceni)
+    {
+        this.SlovniHodnoceni = slovniHodnoceni;
+    }
 }
 
