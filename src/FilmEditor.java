@@ -124,7 +124,7 @@ public class FilmEditor {
                                     "[0]   Hotovo\n"+
                                     "    Vyber akci: ");
                                 volba=InputChecker.getInt(sc);
-                            while(volba!=0||volba!=9){
+                            while(volba!=0&&volba!=9){
                                 FilmHrany vybranyFilm = hraneFilmy.get(i);
                                 switch(volba){
                                     case 1:
@@ -199,7 +199,7 @@ public class FilmEditor {
                                     "[0]   Hotovo\n"+
                                     "    Vyber akci: ");
                     volba=InputChecker.getInt(sc);
-                while(volba!=0||volba!=9){
+                while(volba!=0&&volba!=9){
                     FilmAnimovany vybranyFilm = animovaneFilmy.get(i);
                     switch(volba){
                         case 1:
@@ -274,7 +274,68 @@ public class FilmEditor {
         }
     }
 
-
+    public static void pridejHodnoceni(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy)
+    {
+        String nazev;
+        int volba;
+        Scanner sc= new Scanner(System.in);
+        System.out.print("    Zadej název filmu: ");
+        nazev=sc.nextLine();
+        int i = 0;
+        int nalezeno = 0;
+        for (FilmHrany film : hraneFilmy) {
+            if(film.getNazev().equals(nazev)){
+                nalezeno = 1;
+                break;
+            }
+            i++;
+        }
+        if(nalezeno==0){
+            i = 0;
+            for (FilmAnimovany film : animovaneFilmy) {
+                if(film.getNazev().equals(nazev)){
+                    nalezeno = 2;
+                    break;
+                }   
+                i++;
+            }
+        }
+        switch(nalezeno){
+        case 1:
+            FilmHrany vybranyFilm = hraneFilmy.get(i);
+            System.out.println("    Současné hodnocení "+vybranyFilm.getHodnoceni());
+            vybranyFilm.setHodnoceni(sc);
+            System.out.print(
+            "    Chceš zadat slovní hodnocení?\n"+
+            "[1]   Ano\n"+
+            "[2]   Ne\n"+
+            "    Vyber akci: ");
+            volba = InputChecker.getInt(sc);
+            if(volba ==1){
+                System.out.print("    Zadej slovní hodnocení: ");
+                vybranyFilm.setSlovniHodnoceni(sc.nextLine());
+            }
+        break;
+        case 2:
+            FilmAnimovany vybranyFilm = animovaneFilmy.get(i);
+            System.out.println("    Současné hodnocení "+vybranyFilm.getHodnoceni());
+            vybranyFilm.setHodnoceni(sc);
+            System.out.print(
+            "    Chceš zadat slovní hodnocení?\n"+
+            "[1]   Ano\n"+
+            "[2]   Ne\n"+
+            "    Vyber akci: ");
+            volba = InputChecker.getInt(sc);
+            if(volba ==1){
+                System.out.print("    Zadej slovní hodnocení: ");
+                vybranyFilm.setSlovniHodnoceni(sc.nextLine());
+            }
+        break;
+        case 0:
+            System.out.println("    Film nenalezen");
+        break;
+        }
+    }
 
     public static void odstranFilm(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy){
         String nazev;

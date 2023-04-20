@@ -25,7 +25,7 @@ public class FilmHrany extends Film{
         String herci = "\n    Seznam herců: \n";
         if(SeznamHercu!=null){
             for (String jmeno : this.SeznamHercu) {
-                herci+="    "+jmeno+"\n";
+                herci+="              "+jmeno+"\n";
             }
         }
         return(super.filmToString()+herci);
