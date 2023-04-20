@@ -19,39 +19,42 @@ public class FilmEditor {
                     "[0]   Zpět\n"+
                     "    Vyber akci: ");
                 volba = InputChecker.getInt(sc);
-                
-                
         switch(volba){
             case 0:
             break;
             case 1:
             System.out.print("    Zadej název filmu: ");
-            nazev = sc.nextLine();
-            System.out.print("    Zadej jméno režiséra filmu: ");
-            reziser = sc.nextLine();
-            System.out.print("    Zadej rok vydání filmu: ");
-            rokVydani=InputChecker.getInt(sc);
-            System.out.print(
-            "    Chceš zadat seznam herců?\n"+
-            "[1]   Ano\n"+
-            "[2]   Ne\n"+
-            "    Vyber akci: ");
-            volba=InputChecker.getInt(sc);
-            if(volba==1){
-                List<String> seznamhercu=new ArrayList<String>();
-                System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
-                herec = sc.nextLine();
-                while(!herec.equals("0")){
-                    seznamhercu.add(herec);
+            nazev=sc.nextLine();
+            if(InputChecker.dotupnyNazev(nazev, hraneFilmy, animovaneFilmy)){
+                System.out.print("    Zadej jméno režiséra filmu: ");
+                reziser = sc.nextLine();
+                System.out.print("    Zadej rok vydání filmu: ");
+                rokVydani=InputChecker.getInt(sc);
+                System.out.print(
+                "    Chceš zadat seznam herců?\n"+
+                "[1]   Ano\n"+
+                "[2]   Ne\n"+
+                "    Vyber akci: ");
+                volba=InputChecker.getInt(sc);
+                if(volba==1){
+                    List<String> seznamhercu=new ArrayList<String>();
                     System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
                     herec = sc.nextLine();
+                    while(!herec.equals("0")){
+                        seznamhercu.add(herec);
+                        System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
+                        herec = sc.nextLine();
+                    }
+                    hraneFilmy.add(new FilmHrany(nazev, reziser, rokVydani, seznamhercu)) ;
+                    System.out.println( hraneFilmy.get(0).filmToString());
                 }
-                hraneFilmy.add(new FilmHrany(nazev, reziser, rokVydani, seznamhercu)) ;
-                System.out.println( hraneFilmy.get(0).filmToString());
+                else{
+                    hraneFilmy.add(new FilmHrany(nazev, reziser, rokVydani));
+                }
             }
             else{
-                hraneFilmy.add(new FilmHrany(nazev, reziser, rokVydani));
-            }
+                System.out.println("    Název je již použit!!!");
+            }   
             break;
             case 2:
             System.out.print("    Zadej název filmu: ");
@@ -129,7 +132,13 @@ public class FilmEditor {
                                 switch(volba){
                                     case 1:
                                         System.out.print("    Současný název "+vybranyFilm.getNazev()+"\n    Nový název: ");
-                                        vybranyFilm.setNazev(sc.nextLine());
+                                        nazev=sc.nextLine();
+                                        if(InputChecker.dotupnyNazev(nazev, hraneFilmy, animovaneFilmy)){
+                                            vybranyFilm.setNazev(nazev);
+                                        }
+                                        else{
+                                            System.out.println("    Název je již použit");
+                                        }
                                     break;
                                     case 2:
                                         System.out.print("    Současný režisér "+vybranyFilm.getNazev()+"\n    Nový režisér: ");
