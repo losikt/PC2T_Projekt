@@ -36,10 +36,17 @@ public class App {
                     FilmEditor.odstranFilm(animovaneFilmy, hraneFilmy);
                 break;
                 case 4:
-                
+                    FilmEditor.pridejHodnoceni(animovaneFilmy, hraneFilmy);
                 break;
                 case 5:
-                
+                    System.out.println("    Hrané filmy: ");
+                    for (FilmHrany film : hraneFilmy) {
+                        System.out.println(film.filmToString());
+                    }
+                    System.out.println("    Animované filmy: ");
+                    for (FilmAnimovany film : animovaneFilmy) {
+                        System.out.println(film.filmToString());
+                    }
                 break;
                 case 6:
                 
