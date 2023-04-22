@@ -39,26 +39,19 @@ public class App {
                     FilmEditor.pridejHodnoceni(animovaneFilmy, hraneFilmy);
                 break;
                 case 5:
-                    System.out.println("    Hrané filmy: ");
-                    for (FilmHrany film : hraneFilmy) {
-                        System.out.println(film.filmToString());
-                    }
-                    System.out.println("    Animované filmy: ");
-                    for (FilmAnimovany film : animovaneFilmy) {
-                        System.out.println(film.filmToString());
-                    }
+                    FilmEditor.vypisFilmy(animovaneFilmy, hraneFilmy); // oddělat hodnocení
                 break;
                 case 6:
-                
+                    FilmEditor.vypisFilm(animovaneFilmy, hraneFilmy);
                 break;
                 case 7:
-                
+                    //herci
                 break;
                 case 8:
-                
+                    //zápis do souboru
                 break;
                 case 9:
-                
+                    //načtení ze souboru
                 break;
                 case 10:
                 
