@@ -117,103 +117,28 @@ public class FilmEditor {
                     }
                     switch(nalezeno)
                     {
-                        case 1:
-                            System.out.print(
-                                    "[1]   Upravit název\n"+
-                                    "[2]   Upravit režiséra\n"+
-                                    "[3]   Upravit rok vydání\n"+
-                                    "[4]   Upravit seznam herců\n"+
-                                    "[5]   Upravit hodnocení\n"+
-                                    "[0]   Hotovo\n"+
-                                    "    Vyber akci: ");
-                                volba=InputChecker.getInt(sc);
-                            while(volba!=0&&volba!=9){
-                                FilmHrany vybranyFilm = hraneFilmy.get(i);
-                                switch(volba){
-                                    case 1:
-                                        System.out.print("    Současný název "+vybranyFilm.getNazev()+"\n    Nový název: ");
-                                        nazev=sc.nextLine();
-                                        if(InputChecker.dotupnyNazev(nazev, hraneFilmy, animovaneFilmy)){
-                                            vybranyFilm.setNazev(nazev);
-                                        }
-                                        else{
-                                            System.out.println("    Název je již použit");
-                                        }
-                                    break;
-                                    case 2:
-                                        System.out.print("    Současný režisér "+vybranyFilm.getNazev()+"\n    Nový režisér: ");
-                                        vybranyFilm.setReziser(sc.nextLine());
-                                    break;
-                                    case 3:
-                                        System.out.print("    Současný rok vydání "+vybranyFilm.getNazev()+"\n    Nový rok vydání: ");
-                                        vybranyFilm.setRokVydani(InputChecker.getInt(sc));
-                                    break;
-                                    case 4:
-                                        if(vybranyFilm.SeznamHercu!=null);
-                                        System.out.println("    Současný seznam herců: "+vybranyFilm.SeznamHercu.get(0));
-                                        for(int j =1; j<vybranyFilm.SeznamHercu.size();j++)
-                                        {
-                                            System.out.println("                           "+vybranyFilm.SeznamHercu.get(j));
-                                        }
-                                        List<String> novySeznamHercu = new ArrayList<String>();
-                                        System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
-                                        herec = sc.nextLine();
-                                        while(!herec.equals("0")){
-                                            novySeznamHercu.add(herec);
-                                            System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
-                                            herec = sc.nextLine();
-                                        }
-                                        vybranyFilm.setSeznamHercu(novySeznamHercu);
-                                    break;
-                                    case 5:
-                                        System.out.println("    Současné hodnocení "+vybranyFilm.getHodnoceni());
-                                        vybranyFilm.setHodnoceni(sc);
-                                        System.out.print(
-                                        "    Chceš zadat slovní hodnocení?\n"+
-                                        "[1]   Ano\n"+
-                                        "[2]   Ne\n"+
-                                        "    Vyber akci: ");
-                                        volba=InputChecker.getInt(sc);
-                                        if(volba ==1){
-                                            System.out.print("    Zadej slovní hodnocení: ");
-                                            vybranyFilm.setSlovniHodnoceni(sc.nextLine());
-                                        }
-                                    break;
-                                    case 0:
-                                        hraneFilmy.set(i, vybranyFilm);
-                                    break;
-                                    case 9:
-                                    break;
-                                }
-                                System.out.print(
-                                    "[1]   Upravit název\n"+
-                                    "[2]   Upravit režiséra\n"+
-                                    "[3]   Upravit rok vydání\n"+
-                                    "[4]   Upravit seznam herců\n"+
-                                    "[5]   Upravit hodnocení\n"+
-                                    "[0]   Hotovo\n"+
-                                    "[9]   Zrušit změny\n"+
-                                    "    Vyber akci: ");
-                                volba=InputChecker.getInt(sc);
-                            }
-                        break;
-                        case 2:
-                            System.out.print(
-                                    "[1]   Upravit název\n"+
-                                    "[2]   Upravit režiséra\n"+
-                                    "[3]   Upravit rok vydání\n"+
-                                    "[4]   Upravit seznam herců\n"+
-                                    "[5]   Upravit hodnocení\n"+
-                                    "[6]   Upravit Doporučný věk\n"+
-                                    "[0]   Hotovo\n"+
-                                    "    Vyber akci: ");
-                    volba=InputChecker.getInt(sc);
-                while(volba!=0&&volba!=9){
-                    FilmAnimovany vybranyFilm = animovaneFilmy.get(i);
-                    switch(volba){
+                    case 1:
+                        System.out.print(
+                            "[1]   Upravit název\n"+
+                            "[2]   Upravit režiséra\n"+
+                            "[3]   Upravit rok vydání\n"+
+                            "[4]   Upravit seznam herců\n"+
+                            "[5]   Upravit hodnocení\n"+
+                            "[0]   Hotovo\n"+
+                            "    Vyber akci: ");
+                        volba=InputChecker.getInt(sc);
+                        while(volba!=0&&volba!=9){
+                        FilmHrany vybranyFilm = hraneFilmy.get(i);
+                        switch(volba){
                         case 1:
                             System.out.print("    Současný název "+vybranyFilm.getNazev()+"\n    Nový název: ");
-                            vybranyFilm.setNazev(sc.nextLine());
+                            nazev=sc.nextLine();
+                            if(InputChecker.dotupnyNazev(nazev, hraneFilmy, animovaneFilmy)){
+                                vybranyFilm.setNazev(nazev);
+                            }
+                            else{
+                                System.out.println("    Název je již použit");
+                            }
                         break;
                         case 2:
                             System.out.print("    Současný režisér "+vybranyFilm.getNazev()+"\n    Nový režisér: ");
@@ -225,17 +150,17 @@ public class FilmEditor {
                         break;
                         case 4:
                             if(vybranyFilm.SeznamHercu!=null);
-                            System.out.println("    Současný seznam animátorů: "+vybranyFilm.SeznamHercu.get(0));
+                            System.out.println("    Současný seznam herců: "+vybranyFilm.SeznamHercu.get(0));
                             for(int j =1; j<vybranyFilm.SeznamHercu.size();j++)
                             {
-                                System.out.println("                               "+vybranyFilm.SeznamHercu.get(j));
+                                System.out.println("                           "+vybranyFilm.SeznamHercu.get(j));
                             }
                             List<String> novySeznamHercu = new ArrayList<String>();
-                            System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
+                            System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
                             herec = sc.nextLine();
                             while(!herec.equals("0")){
                                 novySeznamHercu.add(herec);
-                                System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
+                                System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
                                 herec = sc.nextLine();
                             }
                             vybranyFilm.setSeznamHercu(novySeznamHercu);
@@ -254,15 +179,90 @@ public class FilmEditor {
                                 vybranyFilm.setSlovniHodnoceni(sc.nextLine());
                             }
                         break;
-                        case 6:
-                            System.out.print("    Současný doporučený věk diváka "+vybranyFilm.getNazev()+"\n    Nový doporučený věk diváka: ");
-                            vybranyFilm.setDoporucenyVek(InputChecker.getInt(sc));
-                        break;
                         case 0:
-                            animovaneFilmy.set(i, vybranyFilm);
+                            hraneFilmy.set(i, vybranyFilm);
                         break;
                         case 9:
                         break;
+                        }
+                        System.out.print(
+                            "[1]   Upravit název\n"+
+                            "[2]   Upravit režiséra\n"+
+                            "[3]   Upravit rok vydání\n"+
+                            "[4]   Upravit seznam herců\n"+
+                            "[5]   Upravit hodnocení\n"+
+                            "[0]   Hotovo\n"+
+                            "[9]   Zrušit změny\n"+
+                            "    Vyber akci: ");
+                        volba=InputChecker.getInt(sc);
+                    }
+                break;
+                case 2:
+                    System.out.print(
+                            "[1]   Upravit název\n"+
+                            "[2]   Upravit režiséra\n"+
+                            "[3]   Upravit rok vydání\n"+
+                            "[4]   Upravit seznam herců\n"+
+                            "[5]   Upravit hodnocení\n"+
+                            "[6]   Upravit Doporučný věk\n"+
+                            "[0]   Hotovo\n"+
+                            "    Vyber akci: ");
+                    volba=InputChecker.getInt(sc);
+                        while(volba!=0&&volba!=9){
+                    FilmAnimovany vybranyFilm = animovaneFilmy.get(i);
+                    switch(volba){
+                    case 1:
+                        System.out.print("    Současný název "+vybranyFilm.getNazev()+"\n    Nový název: ");
+                        vybranyFilm.setNazev(sc.nextLine());
+                    break;
+                    case 2:
+                        System.out.print("    Současný režisér "+vybranyFilm.getNazev()+"\n    Nový režisér: ");
+                        vybranyFilm.setReziser(sc.nextLine());
+                    break;
+                    case 3:
+                        System.out.print("    Současný rok vydání "+vybranyFilm.getNazev()+"\n    Nový rok vydání: ");
+                        vybranyFilm.setRokVydani(InputChecker.getInt(sc));
+                    break;
+                    case 4:
+                        if(vybranyFilm.SeznamHercu!=null);
+                        System.out.println("    Současný seznam animátorů: "+vybranyFilm.SeznamHercu.get(0));
+                        for(int j =1; j<vybranyFilm.SeznamHercu.size();j++)
+                        {
+                            System.out.println("                               "+vybranyFilm.SeznamHercu.get(j));
+                        }
+                        List<String> novySeznamHercu = new ArrayList<String>();
+                        System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
+                        herec = sc.nextLine();
+                        while(!herec.equals("0")){
+                            novySeznamHercu.add(herec);
+                            System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
+                            herec = sc.nextLine();
+                        }
+                        vybranyFilm.setSeznamHercu(novySeznamHercu);
+                    break;
+                    case 5:
+                        System.out.println("    Současné hodnocení "+vybranyFilm.getHodnoceni());
+                        vybranyFilm.setHodnoceni(sc);
+                        System.out.print(
+                        "    Chceš zadat slovní hodnocení?\n"+
+                        "[1]   Ano\n"+
+                        "[2]   Ne\n"+
+                        "    Vyber akci: ");
+                        volba=InputChecker.getInt(sc);
+                        if(volba ==1){
+                            System.out.print("    Zadej slovní hodnocení: ");
+                            vybranyFilm.setSlovniHodnoceni(sc.nextLine());
+                        }
+                    break;
+                    case 6:
+                        System.out.print("    Současný doporučený věk diváka "+vybranyFilm.getNazev()+"\n    Nový doporučený věk diváka: ");
+                        vybranyFilm.setDoporucenyVek(InputChecker.getInt(sc));
+                    break;
+                    case 0:
+                        animovaneFilmy.set(i, vybranyFilm);
+                    break;
+                    case 9:
+                    break;
                     }
                     System.out.print(
                         "[1]   Upravit název\n"+
@@ -326,9 +326,9 @@ public class FilmEditor {
             }
         break;
         case 2:
-            FilmAnimovany vybranyFilm = animovaneFilmy.get(i);
-            System.out.println("    Současné hodnocení "+vybranyFilm.getHodnoceni());
-            vybranyFilm.setHodnoceni(sc);
+            FilmAnimovany vybranFilm = animovaneFilmy.get(i);
+            System.out.println("    Současné hodnocení "+vybranFilm.getHodnoceni());
+            vybranFilm.setHodnoceni(sc);
             System.out.print(
             "    Chceš zadat slovní hodnocení?\n"+
             "[1]   Ano\n"+
@@ -337,7 +337,7 @@ public class FilmEditor {
             volba = InputChecker.getInt(sc);
             if(volba ==1){
                 System.out.print("    Zadej slovní hodnocení: ");
-                vybranyFilm.setSlovniHodnoceni(sc.nextLine());
+                vybranFilm.setSlovniHodnoceni(sc.nextLine());
             }
         break;
         case 0:
@@ -394,4 +394,55 @@ public class FilmEditor {
             break;
         }
     }
+
+    public static void vypisFilmy(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy){
+        System.out.println("    Hrané filmy: ");
+        for (FilmHrany film : hraneFilmy) {
+            System.out.println(film.filmToString());
+        }
+        System.out.println("    Animované filmy: ");
+        for (FilmAnimovany film : animovaneFilmy) {
+            System.out.println(film.filmToString());
+        }
+    }
+
+    public static void vypisFilm(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy){
+        String nazev;
+        int i=0;
+        int nalezeno=0;
+        Scanner sc= new Scanner(System.in);
+        System.out.print("    Zadej název filmu: ");
+        nazev=sc.nextLine();
+        for (FilmHrany film : hraneFilmy) {
+            if(film.getNazev().equals(nazev)){
+                nalezeno = 1;
+                break;
+            }
+            i++;
+        }
+        if(nalezeno==0){
+            i = 0;
+            for (FilmAnimovany film : animovaneFilmy) {
+                if(film.getNazev().equals(nazev)){
+                    nalezeno = 2;
+                    break;
+                }   
+                i++;
+            }
+        }
+        switch(nalezeno){
+        case 1:
+            System.out.println(hraneFilmy.get(i).filmToString());
+        break;
+        case 2:
+            System.out.println(animovaneFilmy.get(i).filmToString());
+        break;
+        case 0:
+            System.out.println("    Film nenalezen");
+        break;
+        }
+    }
+
+
+
 }
