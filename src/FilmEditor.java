@@ -311,9 +311,8 @@ public class FilmEditor {
         }
         switch(nalezeno){
         case 1:
-            FilmHrany vybranyFilm = hraneFilmy.get(i);
-            System.out.println("    Současné hodnocení "+vybranyFilm.getHodnoceni());
-            vybranyFilm.setHodnoceni(sc);
+            System.out.println("    Současné hodnocení "+hraneFilmy.get(i).getHodnoceni());
+            hraneFilmy.get(i).setHodnoceni(sc);
             System.out.print(
             "    Chceš zadat slovní hodnocení?\n"+
             "[1]   Ano\n"+
@@ -322,13 +321,12 @@ public class FilmEditor {
             volba = InputChecker.getInt(sc);
             if(volba ==1){
                 System.out.print("    Zadej slovní hodnocení: ");
-                vybranyFilm.setSlovniHodnoceni(sc.nextLine());
+                hraneFilmy.get(i).setSlovniHodnoceni(sc.nextLine());
             }
         break;
         case 2:
-            FilmAnimovany vybranFilm = animovaneFilmy.get(i);
-            System.out.println("    Současné hodnocení "+vybranFilm.getHodnoceni());
-            vybranFilm.setHodnoceni(sc);
+            System.out.println("    Současné hodnocení "+animovaneFilmy.get(i).getHodnoceni());
+            animovaneFilmy.get(i).setHodnoceni(sc);
             System.out.print(
             "    Chceš zadat slovní hodnocení?\n"+
             "[1]   Ano\n"+
@@ -337,7 +335,7 @@ public class FilmEditor {
             volba = InputChecker.getInt(sc);
             if(volba ==1){
                 System.out.print("    Zadej slovní hodnocení: ");
-                vybranFilm.setSlovniHodnoceni(sc.nextLine());
+                animovaneFilmy.get(i).setSlovniHodnoceni(sc.nextLine());
             }
         break;
         case 0:
@@ -396,11 +394,11 @@ public class FilmEditor {
     }
 
     public static void vypisFilmy(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy){
-        System.out.println("    Hrané filmy: ");
+        System.out.println("   Hrané filmy: ");
         for (FilmHrany film : hraneFilmy) {
             System.out.println(film.filmToString());
         }
-        System.out.println("    Animované filmy: ");
+        System.out.println("   Animované filmy: ");
         for (FilmAnimovany film : animovaneFilmy) {
             System.out.println(film.filmToString());
         }
@@ -433,9 +431,15 @@ public class FilmEditor {
         switch(nalezeno){
         case 1:
             System.out.println(hraneFilmy.get(i).filmToString());
+            System.out.println("    Hodnocení filmu: "+hraneFilmy.get(i).getHodnoceni());
+            if(!hraneFilmy.get(i).getSlovniHodnoceni().equals(""))
+            System.out.println("    Slovní hodnocení: "+ hraneFilmy.get(i).getSlovniHodnoceni());
         break;
         case 2:
             System.out.println(animovaneFilmy.get(i).filmToString());
+            System.out.println("    Hodnocení filmu: "+animovaneFilmy.get(i).getHodnoceni());
+            if(!animovaneFilmy.get(i).getSlovniHodnoceni().equals(""))
+            System.out.println("    Slovní hodnocení: "+ animovaneFilmy.get(i).getSlovniHodnoceni());
         break;
         case 0:
             System.out.println("    Film nenalezen");
