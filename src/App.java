@@ -39,7 +39,7 @@ public class App {
                     FilmEditor.pridejHodnoceni(animovaneFilmy, hraneFilmy);
                 break;
                 case 5:
-                    FilmEditor.vypisFilmy(animovaneFilmy, hraneFilmy); // oddělat hodnocení
+                    FilmEditor.vypisFilmy(animovaneFilmy, hraneFilmy);
                 break;
                 case 6:
                     FilmEditor.vypisFilm(animovaneFilmy, hraneFilmy);
