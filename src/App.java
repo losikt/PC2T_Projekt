@@ -6,8 +6,11 @@ public class App {
     public static void main(String[] args) throws Exception {
         List<FilmAnimovany> animovaneFilmy = new ArrayList<FilmAnimovany>();
         List<FilmHrany> hraneFilmy = new ArrayList<FilmHrany>();
+        List<Herec> herci = new ArrayList<Herec>();
         int volba;
         Scanner sc = new Scanner(System.in);
+        
+
         System.out.print(
             "[1]   Přidání filmu\n"+
             "[2]   Upravení filmu\n"+

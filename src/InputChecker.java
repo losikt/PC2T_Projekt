@@ -29,4 +29,19 @@ public class InputChecker {
         }
         return true;
     }
+
+    public static String upravJmeno(String jmeno)
+    {
+        jmeno=jmeno.toLowerCase();
+        String[] slova  = jmeno.split(" ");
+        System.out.println(jmeno);
+        jmeno="";
+        for (String slovo : slova) {
+            jmeno += slovo.substring(0, 1).toUpperCase()+slovo.substring(1)+" ";
+
+        }
+        jmeno = jmeno.substring(0, jmeno.length()-1);
+        return jmeno;
+    }
+
 }
