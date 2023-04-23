@@ -33,7 +33,7 @@ public abstract class Film {
     }
 
     public void setReziser(String reziser) {
-        this.Reziser = reziser;
+        this.Reziser = InputChecker.upravJmeno(reziser);
     }
 
     public int getRokVydani() {

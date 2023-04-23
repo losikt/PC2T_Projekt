@@ -39,11 +39,11 @@ public class FilmEditor {
                 if(volba==1){
                     List<String> seznamhercu=new ArrayList<String>();
                     System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
-                    herec = sc.nextLine();
+                    herec = InputChecker.upravJmeno(sc.nextLine());
                     while(!herec.equals("0")){
                         seznamhercu.add(herec);
                         System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
-                        herec = sc.nextLine();
+                        herec = InputChecker.upravJmeno(sc.nextLine());
                     }
                     hraneFilmy.add(new FilmHrany(nazev, reziser, rokVydani, seznamhercu)) ;
                     System.out.println( hraneFilmy.get(0).filmToString());
@@ -157,11 +157,11 @@ public class FilmEditor {
                             }
                             List<String> novySeznamHercu = new ArrayList<String>();
                             System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
-                            herec = sc.nextLine();
+                            herec = InputChecker.upravJmeno(sc.nextLine());
                             while(!herec.equals("0")){
                                 novySeznamHercu.add(herec);
                                 System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
-                                herec = sc.nextLine();
+                                herec = InputChecker.upravJmeno(sc.nextLine());
                             }
                             vybranyFilm.setSeznamHercu(novySeznamHercu);
                         break;
@@ -232,11 +232,11 @@ public class FilmEditor {
                         }
                         List<String> novySeznamHercu = new ArrayList<String>();
                         System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
-                        herec = sc.nextLine();
+                        herec = InputChecker.upravJmeno(sc.nextLine());
                         while(!herec.equals("0")){
                             novySeznamHercu.add(herec);
                             System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
-                            herec = sc.nextLine();
+                            herec = InputChecker.upravJmeno(sc.nextLine());
                         }
                         vybranyFilm.setSeznamHercu(novySeznamHercu);
                     break;
