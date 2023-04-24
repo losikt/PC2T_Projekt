@@ -445,8 +445,6 @@ public class FilmEditor {
             System.out.println("    Film nenalezen");
         break;
         }
+        sc.close();
     }
-
-
-
 }
