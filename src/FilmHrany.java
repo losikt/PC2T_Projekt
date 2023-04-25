@@ -13,7 +13,7 @@ public class FilmHrany extends Film{
         super(nazev, reziser, rokVydani);
         this.SeznamHercu= seznamHercu;
     }
-    public FilmHrany(String nazev,String reziser, int rokVydani, List<String>seznamHercu, int hodnoceni){
+    public FilmHrany(String nazev,String reziser, int rokVydani, List<String>seznamHercu, int hodnoceni, String slovniHodnoceni){
         super(nazev, reziser, rokVydani);
         this.SeznamHercu= seznamHercu;
         this.Hodnoceni = hodnoceni;
