@@ -51,7 +51,11 @@ public class App {
                     FilmEditor.vypisFilm(animovaneFilmy, hraneFilmy);
                 break;
                 case 7:
-                    //herci
+                    for (Herec herec : herci) {
+                        if(herec.getPocetFilmu()>1){
+                            Herec.vypsatFilmy(animovaneFilmy, hraneFilmy, herec.getJmeno());
+                        }
+                    }
                 break;
                 case 8:
                     //zápis do souboru
