@@ -34,7 +34,6 @@ public class InputChecker {
     {
         jmeno=jmeno.toLowerCase();
         String[] slova  = jmeno.split(" ");
-        System.out.println(jmeno);
         jmeno="";
         for (String slovo : slova) {
             jmeno += slovo.substring(0, 1).toUpperCase()+slovo.substring(1)+" ";
