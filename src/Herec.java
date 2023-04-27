@@ -1,7 +1,9 @@
 public class Herec {
     private int pocetFilmu;
+    private String Jmeno;
 
-    public Herec(int pocetFilmu) {
+    public Herec(String jmeno, int pocetFilmu) {
+        this.Jmeno= jmeno;
         this.pocetFilmu = pocetFilmu;
     }
 
@@ -15,6 +17,10 @@ public class Herec {
 
     public void odstranitFilm(){
         this.pocetFilmu--;
+    }
+
+    public String getJmeno(){
+        return this.Jmeno;
     }
 
     public int getPocetFilmu() {

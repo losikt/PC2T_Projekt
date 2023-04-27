@@ -18,11 +18,12 @@ public class FilmAnimovany extends Film{
         this.DoporucenyVek = doporucenyVek;
     }
 
-    public FilmAnimovany(String nazev,String reziser, int rokVydani, List<String>seznamHercu, int hodnoceni, int doporucenyVek){
+    public FilmAnimovany(String nazev,String reziser, int rokVydani, List<String>seznamHercu, int hodnoceni,String slovniHodnoceni, int doporucenyVek){
         super(nazev, reziser, rokVydani);
         this.SeznamHercu= seznamHercu;
         this.Hodnoceni = hodnoceni;
         this.DoporucenyVek = doporucenyVek;
+        this.SlovniHodnoceni = slovniHodnoceni;
     }
 
     @Override
