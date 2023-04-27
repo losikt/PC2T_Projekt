@@ -13,7 +13,7 @@ public class Databaze {
     {   try
         {
             Class.forName("org.sqlite.JDBC");
-            String url = "jdbc:sqlite:Filmy.db";
+            String url = "jdbc:sqlite:PC2T_Projekt/Filmy.db";
             Connection con = DriverManager.getConnection(url);
             Statement statement = con.createStatement();
             String query = "SELECT * FROM filmy";
@@ -86,7 +86,7 @@ public class Databaze {
     public static void zapisData(List<FilmAnimovany> animovanefilmy, List<FilmHrany> hranefilmy){   
         try {
             Class.forName("org.sqlite.JDBC");
-            String url = "jdbc:sqlite:Filmy.db";
+            String url = "jdbc:sqlite:PC2T_Projekt/Filmy.db";
             Connection con = DriverManager.getConnection(url);
             String sql = "DELETE FROM filmy";
             PreparedStatement statement = con.prepareStatement(sql);
@@ -103,10 +103,10 @@ public class Databaze {
                 statement.setString(7, film.getSlovniHodnoceni());
                 statement.executeUpdate();
             }
-            sql = "INSERT INTO filmy (druh, nazev, reziser, rok, herci, hodnoceni, slovhodnoceni, vek) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO filmy(druh,nazev,reziser,rok,herci,hodnoceni,slovhodnoceni,vek)VALUES(?,?,?,?,?,?,?,?)";
             statement = con.prepareStatement(sql); 
             for (FilmAnimovany film : animovanefilmy) {
-                statement.setInt(1, 1);
+                statement.setInt(1, 2);
                 statement.setString(2, film.getNazev());
                 statement.setString(3, film.getReziser());
                 statement.setInt(4, film.getRokVydani());

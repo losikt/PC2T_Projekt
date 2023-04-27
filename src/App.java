@@ -10,7 +10,9 @@ public class App {
         int volba;
         Scanner sc = new Scanner(System.in);
         Databaze.nactiData(animovaneFilmy, hraneFilmy, herci);
-        System.out.print(
+        
+        do{
+            System.out.print(
             "[1]   Přidání filmu\n"+
             "[2]   Upravení filmu\n"+
             "[3]   Smazání filmu\n"+
@@ -24,9 +26,9 @@ public class App {
             "[0]   Konec\n"+
             "    Vyber akci: ");
             volba = InputChecker.getInt(sc);
-        while(volba !=0){
             switch(volba){
                 case 0:
+                    Databaze.zapisData(animovaneFilmy, hraneFilmy);
                 break;
                 case 1:
                     FilmEditor.vytvorFilm(animovaneFilmy, hraneFilmy);
@@ -54,29 +56,15 @@ public class App {
                     }
                 break;
                 case 8:
-                    //zápis do souboru
+                    //vipis filmu herce
                 break;
                 case 9:
-                    //načtení ze souboru
+                    //zápis do souboru
                 break;
                 case 10:
-                    Databaze.zapisData(animovaneFilmy, hraneFilmy);
+                   //načtení ze souboru
                 break;
             }
-            System.out.print(
-            "[1]   Přidání filmu\n"+
-            "[2]   Upravení filmu\n"+
-            "[3]   Smazání filmu\n"+
-            "[4]   Přidání hodnocení filmu\n"+
-            "[5]   Výpis filmů\n"+
-            "[6]   Vyhledání filmu\n"+
-            "[7]   Výpis herců/animátorů kteří se podíleli na více dílech\n"+
-            "[8]   Výpis filmů podle herců/animátorů\n"+
-            "[9]   Uložení informací o filmu\n"+
-            "[10]  Přidání filmu souborem\n"+
-            "[0]   Konec\n"+
-            "    Vyber akci: ");
-            volba = InputChecker.getInt(sc);
-        }
+        }while(volba !=0);
     }
 }

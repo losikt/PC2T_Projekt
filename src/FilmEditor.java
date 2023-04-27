@@ -27,7 +27,7 @@ public class FilmEditor {
             nazev=sc.nextLine();
             if(InputChecker.dotupnyNazev(nazev, hraneFilmy, animovaneFilmy)){
                 System.out.print("    Zadej jméno režiséra filmu: ");
-                reziser = sc.nextLine();
+                reziser = InputChecker.upravJmeno(sc.nextLine());
                 System.out.print("    Zadej rok vydání filmu: ");
                 rokVydani=InputChecker.getInt(sc);
                 System.out.print(
@@ -60,7 +60,7 @@ public class FilmEditor {
             System.out.print("    Zadej název filmu: ");
             nazev = sc.nextLine();
             System.out.print("    Zadej jméno režiséra filmu: ");
-            reziser = sc.nextLine();
+            reziser = InputChecker.upravJmeno(sc.nextLine());
             System.out.print("    Zadej rok vydání filmu: ");
             rokVydani=InputChecker.getInt(sc);
             System.out.print("    Zadej dopručený věk diváka filmu: ");
@@ -142,7 +142,7 @@ public class FilmEditor {
                         break;
                         case 2:
                             System.out.print("    Současný režisér "+vybranyFilm.getNazev()+"\n    Nový režisér: ");
-                            vybranyFilm.setReziser(sc.nextLine());
+                            vybranyFilm.setReziser(InputChecker.upravJmeno(sc.nextLine()));
                         break;
                         case 3:
                             System.out.print("    Současný rok vydání "+vybranyFilm.getNazev()+"\n    Nový rok vydání: ");
@@ -217,7 +217,7 @@ public class FilmEditor {
                     break;
                     case 2:
                         System.out.print("    Současný režisér "+vybranyFilm.getNazev()+"\n    Nový režisér: ");
-                        vybranyFilm.setReziser(sc.nextLine());
+                        vybranyFilm.setReziser(InputChecker.upravJmeno(sc.nextLine()));
                     break;
                     case 3:
                         System.out.print("    Současný rok vydání "+vybranyFilm.getNazev()+"\n    Nový rok vydání: ");
@@ -394,11 +394,11 @@ public class FilmEditor {
     }
 
     public static void vypisFilmy(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy){
-        System.out.println("   Hrané filmy: ");
+        System.out.println(" HRANÉ FILMY: ");
         for (FilmHrany film : hraneFilmy) {
             System.out.println(film.filmToString());
         }
-        System.out.println("   Animované filmy: ");
+        System.out.println(" ANIMOVANÉ FILMY: ");
         for (FilmAnimovany film : animovaneFilmy) {
             System.out.println(film.filmToString());
         }
