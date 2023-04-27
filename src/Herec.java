@@ -24,6 +24,15 @@ public class Herec {
         }
     }
 
+    public static String vytvoritSeznam(List<String> seznamHercu){
+        String seznam="";
+        for (String jmeno : seznamHercu){
+            seznam+=jmeno+";";
+        }
+        seznam= seznam.substring(0, seznam.length()-1);
+        return seznam;
+    }
+
     public Herec(){
         this.pocetFilmu = 0;
     }

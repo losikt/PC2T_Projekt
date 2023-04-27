@@ -1,4 +1,3 @@
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,10 +9,7 @@ public class App {
         List<Herec> herci = new ArrayList<Herec>();
         int volba;
         Scanner sc = new Scanner(System.in);
-        Connection con = Databaze.dbConnect();
-        Databaze.nactiData(con, animovaneFilmy, hraneFilmy, herci);
-
-
+        Databaze.nactiData(animovaneFilmy, hraneFilmy, herci);
         System.out.print(
             "[1]   Přidání filmu\n"+
             "[2]   Upravení filmu\n"+
@@ -64,7 +60,7 @@ public class App {
                     //načtení ze souboru
                 break;
                 case 10:
-                
+                    Databaze.zapisData(animovaneFilmy, hraneFilmy);
                 break;
             }
             System.out.print(
