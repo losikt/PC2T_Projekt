@@ -54,6 +54,9 @@ public class FilmHrany extends Film{
 
     public String getSlovniHodnoceni()
     {
+        if(SlovniHodnoceni==null)
+        return "";
+        else
         return this.SlovniHodnoceni;
     }
 

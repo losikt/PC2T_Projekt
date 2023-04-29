@@ -13,71 +13,71 @@ public class Databaze {
     {   try
         {
             Class.forName("org.sqlite.JDBC");
-            String url = "jdbc:sqlite:PC2T_Projekt/Filmy.db";
+            String url = "jdbc:sqlite:Filmy.db";
             Connection con = DriverManager.getConnection(url);
             Statement statement = con.createStatement();
             String query = "SELECT * FROM filmy";
             ResultSet rs = statement.executeQuery(query);
             while(rs.next())
             {
-            int druh = rs.getInt(2);
-            if(druh == 1)
-            {
-                String nazev = rs.getString(3);
-                String reziser = rs.getString(4);
-                int rokVydani = rs.getInt(5);
-                List<String> seznamHercu= new ArrayList<String>(); 
-                String herciText = rs.getString(6);
-                for (String herec : herciText.split(";")){
-                    herec = InputChecker.upravJmeno(herec);
-                    seznamHercu.add(herec);
-                    Boolean nalezeno = false;
-                    for (Herec her : herci){
-                        if(her.getJmeno().equals(herec)){
-                            her.pridatFilm();
-                            nalezeno = true;
-                            break;
+                int druh = rs.getInt(2);
+                if(druh == 1)
+                {
+                    String nazev = rs.getString(3);
+                    String reziser = rs.getString(4);
+                    int rokVydani = rs.getInt(5);
+                    List<String> seznamHercu= new ArrayList<String>(); 
+                    String herciText = rs.getString(6);
+                    for (String herec : herciText.split(";")){
+                        herec = InputChecker.upravJmeno(herec);
+                        seznamHercu.add(herec);
+                        Boolean nalezeno = false;
+                        for (Herec her : herci){
+                            if(her.getJmeno().equals(herec)){
+                                her.pridatFilm();
+                                nalezeno = true;
+                                break;
+                            }
+                        }
+                        if(!nalezeno){
+                            herci.add(new Herec(herec,1));
                         }
                     }
-                    if(!nalezeno){
-                        herci.add(new Herec(herec,1));
-                    }
+                    int hodnoceni = rs.getInt(7);
+                    String slovniHodnoceni = rs.getString(8);
+                    FilmHrany film =new FilmHrany(nazev, reziser, rokVydani, seznamHercu, hodnoceni, slovniHodnoceni);
+                    hranefilmy.add(film);
                 }
-                int hodnoceni = rs.getInt(7);
-                String slovniHodnoceni = rs.getString(8);
-                FilmHrany film =new FilmHrany(nazev, reziser, rokVydani, seznamHercu, hodnoceni, slovniHodnoceni);
-                hranefilmy.add(film);
-            }
-            else
-            {
-                String nazev = rs.getString(3);
-                String reziser = rs.getString(4);
-                int rokVydani = rs.getInt(5);
-                List<String> seznamHercu= new ArrayList<String>(); 
-                String herciText = rs.getString(6);
-                for (String herec : herciText.split(";")){
-                    herec = InputChecker.upravJmeno(herec);
-                    seznamHercu.add(herec);
-                    Boolean nalezeno = false;
-                    for (Herec her : herci){
-                        if(her.getJmeno().equals(herec)){
-                            her.pridatFilm();
-                            nalezeno = true;
-                            break;
+                else
+                {
+                    String nazev = rs.getString(3);
+                    String reziser = rs.getString(4);
+                    int rokVydani = rs.getInt(5);
+                    List<String> seznamHercu= new ArrayList<String>(); 
+                    String herciText = rs.getString(6);
+                    for (String herec : herciText.split(";")){
+                        herec = InputChecker.upravJmeno(herec);
+                        seznamHercu.add(herec);
+                        Boolean nalezeno = false;
+                        for (Herec her : herci){
+                            if(her.getJmeno().equals(herec)){
+                                her.pridatFilm();
+                                nalezeno = true;
+                                break;
+                            }
+                        }
+                        if(!nalezeno){
+                            herci.add(new Herec(herec,1));
                         }
                     }
-                    if(!nalezeno){
-                        herci.add(new Herec(herec,1));
-                    }
+                    int hodnoceni = rs.getInt(7);
+                    String slovniHodnoceni = rs.getString(8);
+                    int doporucenyVek = rs.getInt(9);
+                    FilmAnimovany film =new FilmAnimovany(nazev, reziser, rokVydani, seznamHercu, hodnoceni, slovniHodnoceni,doporucenyVek);
+                    animovanefilmy.add(film);
                 }
-                int hodnoceni = rs.getInt(7);
-                String slovniHodnoceni = rs.getString(8);
-                int doporucenyVek = rs.getInt(9);
-                FilmAnimovany film =new FilmAnimovany(nazev, reziser, rokVydani, seznamHercu, hodnoceni, slovniHodnoceni,doporucenyVek);
-                animovanefilmy.add(film);
             }
             con.close();
-        }
         }catch (Exception e) {
             System.err.println("Exception: " + e.getMessage());
         }
@@ -86,7 +86,7 @@ public class Databaze {
     public static void zapisData(List<FilmAnimovany> animovanefilmy, List<FilmHrany> hranefilmy){   
         try {
             Class.forName("org.sqlite.JDBC");
-            String url = "jdbc:sqlite:PC2T_Projekt/Filmy.db";
+            String url = "jdbc:sqlite:Filmy.db";
             Connection con = DriverManager.getConnection(url);
             String sql = "DELETE FROM filmy";
             PreparedStatement statement = con.prepareStatement(sql);
