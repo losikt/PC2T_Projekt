@@ -74,11 +74,11 @@ public class FilmEditor {
                 if(volba==1){
                     List<String> seznamhercu=new ArrayList<String>();
                     System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
-                    herec = sc.nextLine();
+                    herec = InputChecker.upravJmeno(sc.nextLine());
                     while(!herec.equals("0")){
                         seznamhercu.add(herec);
                         System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
-                        herec = sc.nextLine();
+                        herec = InputChecker.upravJmeno(sc.nextLine());
                     }
                     animovaneFilmy.add(new FilmAnimovany(nazev, reziser, rokVydani, seznamhercu,doporucenyVek)) ;
                 }
@@ -395,11 +395,11 @@ public class FilmEditor {
     public static void vypisFilmy(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy){
         System.out.println(" HRANÉ FILMY: ");
         for (FilmHrany film : hraneFilmy) {
-            System.out.println(film.filmToString());
+            System.out.print(film.filmToString());
         }
         System.out.println(" ANIMOVANÉ FILMY: ");
         for (FilmAnimovany film : animovaneFilmy) {
-            System.out.println(film.filmToString());
+            System.out.print(film.filmToString());
         }
     }
 

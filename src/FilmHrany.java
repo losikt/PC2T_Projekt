@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class FilmHrany extends Film{
     List<String>SeznamHercu;
@@ -8,6 +9,7 @@ public class FilmHrany extends Film{
 
     public FilmHrany(String nazev,String reziser, int rokVydani){
         super(nazev, reziser, rokVydani);
+        this.SeznamHercu = new ArrayList<String>();
     }
     public FilmHrany(String nazev,String reziser, int rokVydani, List<String>seznamHercu){
         super(nazev, reziser, rokVydani);
@@ -17,6 +19,7 @@ public class FilmHrany extends Film{
         super(nazev, reziser, rokVydani);
         this.SeznamHercu= seznamHercu;
         this.Hodnoceni = hodnoceni;
+        this.SlovniHodnoceni = slovniHodnoceni;
     }
 
     @Override
@@ -54,10 +57,12 @@ public class FilmHrany extends Film{
 
     public String getSlovniHodnoceni()
     {
-        if(SlovniHodnoceni==null)
-        return "";
-        else
-        return this.SlovniHodnoceni;
+        if(SlovniHodnoceni==null){
+            return "";
+        }
+        else{
+            return this.SlovniHodnoceni;
+        }
     }
 
     public void setSlovniHodnoceni(String slovniHodnoceni)

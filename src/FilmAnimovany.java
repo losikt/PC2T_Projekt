@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ public class FilmAnimovany extends Film{
     public FilmAnimovany(String nazev,String reziser, int rokVydani, int doporucenyVek){
         super(nazev, reziser, rokVydani);
         this.DoporucenyVek = doporucenyVek;
+        this.SeznamHercu = new ArrayList<String>();
     }
 
     public FilmAnimovany(String nazev,String reziser, int rokVydani, List<String>seznamHercu, int doporucenyVek){
@@ -69,7 +71,12 @@ public class FilmAnimovany extends Film{
 
     public String getSlovniHodnoceni()
     {
-        return this.SlovniHodnoceni;
+        if(SlovniHodnoceni==null){
+            return "";
+        }
+        else{
+            return this.SlovniHodnoceni;
+        }
     }
 
     public void setSlovniHodnoceni(String slovniHodnoceni)

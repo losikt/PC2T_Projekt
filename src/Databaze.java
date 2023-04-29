@@ -28,19 +28,23 @@ public class Databaze {
                     int rokVydani = rs.getInt(5);
                     List<String> seznamHercu= new ArrayList<String>(); 
                     String herciText = rs.getString(6);
-                    for (String herec : herciText.split(";")){
-                        herec = InputChecker.upravJmeno(herec);
-                        seznamHercu.add(herec);
-                        Boolean nalezeno = false;
-                        for (Herec her : herci){
-                            if(her.getJmeno().equals(herec)){
-                                her.pridatFilm();
-                                nalezeno = true;
-                                break;
+                    if(!herciText.equals("nic")){
+                        for (String herec : herciText.split(";")){
+                            if(herec !=""){
+                                herec = InputChecker.upravJmeno(herec);
+                                seznamHercu.add(herec);
+                                Boolean nalezeno = false;
+                                for (Herec her : herci){
+                                    if(her.getJmeno().equals(herec)){
+                                        her.pridatFilm();
+                                        nalezeno = true;
+                                        break;
+                                    }
+                                }
+                                if(!nalezeno){
+                                    herci.add(new Herec(herec,1));
+                                }
                             }
-                        }
-                        if(!nalezeno){
-                            herci.add(new Herec(herec,1));
                         }
                     }
                     int hodnoceni = rs.getInt(7);
@@ -98,7 +102,12 @@ public class Databaze {
                 statement.setString(2, film.getNazev());
                 statement.setString(3, film.getReziser());
                 statement.setInt(4, film.getRokVydani());
-                statement.setString(5, Herec.vytvoritSeznam(film.getSeznamHercu()));
+                if(!film.getSeznamHercu().isEmpty()){
+                    statement.setString(5, Herec.vytvoritSeznam(film.getSeznamHercu()));
+                }
+                else{
+                    statement.setString(5, "nic");
+                }
                 statement.setInt(6, film.getHodnoceni());
                 statement.setString(7, film.getSlovniHodnoceni());
                 statement.executeUpdate();
@@ -110,7 +119,12 @@ public class Databaze {
                 statement.setString(2, film.getNazev());
                 statement.setString(3, film.getReziser());
                 statement.setInt(4, film.getRokVydani());
-                statement.setString(5, Herec.vytvoritSeznam(film.getSeznamHercu()));
+                if(!film.getSeznamHercu().isEmpty()){
+                    statement.setString(5, Herec.vytvoritSeznam(film.getSeznamHercu()));
+                }
+                else{
+                    statement.setString(5, "nic");
+                }
                 statement.setInt(6, film.getHodnoceni());
                 statement.setString(7, film.getSlovniHodnoceni());
                 statement.setInt(8, film.getDoporucenyVek());
