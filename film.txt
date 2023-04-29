@@ -1,0 +1,8 @@
+/druh
+/nazev
+/reziser
+/rok
+/herci ln
+/hodnoceni
+/slovhodnoceni
+/*vek

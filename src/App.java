@@ -38,15 +38,18 @@ public class App {
                 break;
                 case 3:
                     FilmEditor.odstranFilm(animovaneFilmy, hraneFilmy);
+                    sc.nextLine();
                 break;
                 case 4:
                     FilmEditor.pridejHodnoceni(animovaneFilmy, hraneFilmy);
                 break;
                 case 5:
                     FilmEditor.vypisFilmy(animovaneFilmy, hraneFilmy);
+                    sc.nextLine();
                 break;
                 case 6:
                     FilmEditor.vypisFilm(animovaneFilmy, hraneFilmy);
+                    sc.nextLine();
                 break;
                 case 7:
                     for (Herec herec : herci) {
@@ -54,9 +57,13 @@ public class App {
                             Herec.vypsatFilmy(animovaneFilmy, hraneFilmy, herec.getJmeno());
                         }
                     }
+                    sc.nextLine();
                 break;
                 case 8:
-                    //vipis filmu herce
+                    System.out.print("    Zadej jméno herce / animátora : ");
+                    String jmeno=sc.nextLine();
+                    Herec.vypsatFilmy(animovaneFilmy, hraneFilmy, InputChecker.upravJmeno(jmeno));
+                    sc.nextLine();
                 break;
                 case 9:
                     //zápis do souboru
