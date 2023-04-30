@@ -66,10 +66,10 @@ public class App {
                     sc.nextLine();
                 break;
                 case 9:
-                    //zápis do souboru
+                    Soubor.vypsat(animovaneFilmy, hraneFilmy);
                 break;
                 case 10:
-                   //načtení ze souboru
+                    Soubor.nacist(animovaneFilmy, hraneFilmy, herci);
                 break;
             }
         }while(volba !=0);

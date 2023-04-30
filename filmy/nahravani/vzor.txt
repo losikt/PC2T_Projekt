@@ -1,5 +1,5 @@
-/int druh (1hr/2ani)
 /String nazev
+/int druh (1hr/2ani)
 /String reziser
 /int rok vydani
 /String seznam hercu (jmeno 1;jmeno 2;jmeno 3)
