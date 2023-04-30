@@ -31,8 +31,9 @@ public class FilmAnimovany extends Film{
     @Override
     public String filmToString()
     {
-        String herci = "\n    Seznam herců: \n";
+        String herci ="\n";
         if(this.SeznamHercu!=null){
+            herci ="\n    Seznam herců: \n";
             for (String jmeno : this.SeznamHercu) {
                 herci+="    "+jmeno+"\n";
             }

@@ -1,0 +1,8 @@
+/int druh (1hr/2ani)
+/String nazev
+/String reziser
+/int rok vydani
+/String seznam hercu (jmeno 1;jmeno 2;jmeno 3)
+/int hodnoceni
+/String slov. hodn.
+/int dop. vek pro animovane
