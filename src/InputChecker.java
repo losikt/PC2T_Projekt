@@ -16,6 +16,7 @@ public class InputChecker {
         }
         return cislo;
     }
+
     public static boolean dotupnyNazev(String nazev, List<FilmHrany> hraneFilmy, List<FilmAnimovany> animovaneFilmy){
         for (FilmAnimovany film : animovaneFilmy) {
             if(film.getNazev().equals(nazev)){
@@ -32,15 +33,20 @@ public class InputChecker {
 
     public static String upravJmeno(String jmeno)
     {
-        jmeno=jmeno.toLowerCase();
-        String[] slova  = jmeno.split(" ");
-        jmeno="";
-        for (String slovo : slova) {
-            jmeno += slovo.substring(0, 1).toUpperCase()+slovo.substring(1)+" ";
+        try{
+            jmeno=jmeno.toLowerCase();
+            String[] slova  = jmeno.split(" ");
+            jmeno="";
+            for (String slovo : slova) {
+                jmeno += slovo.substring(0, 1).toUpperCase()+slovo.substring(1)+" ";
 
+            }
+            jmeno = jmeno.substring(0, jmeno.length()-1);
+            return jmeno;
+        }catch(Exception e)
+        {
+            return "";
         }
-        jmeno = jmeno.substring(0, jmeno.length()-1);
-        return jmeno;
-    }
+}
 
 }
