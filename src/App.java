@@ -31,13 +31,13 @@ public class App {
                     Databaze.zapisData(animovaneFilmy, hraneFilmy);
                 break;
                 case 1:
-                    FilmEditor.vytvorFilm(animovaneFilmy, hraneFilmy);
+                    FilmEditor.vytvorFilm(animovaneFilmy, hraneFilmy,herci);
                 break;
                 case 2:
-                    FilmEditor.upravFilm(animovaneFilmy, hraneFilmy);
+                    FilmEditor.upravFilm(animovaneFilmy, hraneFilmy,herci);
                 break;
                 case 3:
-                    FilmEditor.odstranFilm(animovaneFilmy, hraneFilmy);
+                    FilmEditor.odstranFilm(animovaneFilmy, hraneFilmy,herci);
                     sc.nextLine();
                 break;
                 case 4:

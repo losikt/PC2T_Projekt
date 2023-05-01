@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -91,6 +92,7 @@ public class Soubor {
     public static void nacist(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy, List<Herec> herci){
         try {
             Scanner sc = new Scanner(System.in);
+            System.out.print("Zadej název souboru: ");
             String soubor = sc.next();
             File file = new File("filmy/nahravani/"+soubor+".txt");
             Scanner scanner = new Scanner(file);
@@ -155,10 +157,16 @@ public class Soubor {
                         break;
                     }
                 }
+                else{
+                    System.out.println("Tento film již existuje");
+                }
             }
             scanner.close();
         } catch (FileNotFoundException e) {
             System.out.println("Soubor nenalezen :(");
+        }
+        catch(InputMismatchException e){
+            System.out.println("Špatný formát souboru :()");
         }
     }
 }

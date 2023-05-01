@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class FilmEditor {
-    public static void vytvorFilm(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy)
+    public static void vytvorFilm(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy, List<Herec> herci)
     {
         String nazev;
         String reziser;
@@ -37,15 +37,28 @@ public class FilmEditor {
                     "    Vyber akci: ");
                     volba=InputChecker.getInt(sc);
                     if(volba==1){
-                        List<String> seznamhercu=new ArrayList<String>();
+                        List<String> seznamHercu=new ArrayList<String>();
                         System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
                         herec = InputChecker.upravJmeno(sc.nextLine());
                         while(!herec.equals("0")){
-                            seznamhercu.add(herec);
+                            seznamHercu.add(herec);
                             System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
                             herec = InputChecker.upravJmeno(sc.nextLine());
                         }
-                        hraneFilmy.add(new FilmHrany(nazev, reziser, rokVydani, seznamhercu)) ;
+                        hraneFilmy.add(new FilmHrany(nazev, reziser, rokVydani, seznamHercu)) ;
+                        boolean nalezeno = false;
+                        for (String herec1 : seznamHercu) {
+                            for (Herec herec2 : herci){
+                                if(herec2.getJmeno().equals(herec1)){
+                                    herec2.pridatFilm();
+                                    nalezeno = true;
+                                    break;
+                                }
+                            }
+                            if(!nalezeno){
+                                herci.add(new Herec(herec1,1));
+                            }
+                        }
                         System.out.println( hraneFilmy.get(0).filmToString());
                     }
                     else{
@@ -72,15 +85,28 @@ public class FilmEditor {
                 "    Vyber akci: ");
                 volba=InputChecker.getInt(sc);
                 if(volba==1){
-                    List<String> seznamhercu=new ArrayList<String>();
+                    List<String> seznamHercu=new ArrayList<String>();
                     System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
                     herec = InputChecker.upravJmeno(sc.nextLine());
                     while(!herec.equals("0")){
-                        seznamhercu.add(herec);
+                        seznamHercu.add(herec);
                         System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
                         herec = InputChecker.upravJmeno(sc.nextLine());
                     }
-                    animovaneFilmy.add(new FilmAnimovany(nazev, reziser, rokVydani, seznamhercu,doporucenyVek)) ;
+                    animovaneFilmy.add(new FilmAnimovany(nazev, reziser, rokVydani, seznamHercu,doporucenyVek)) ;
+                    boolean nalezeno = false;
+                    for (String herec1 : seznamHercu) {
+                        for (Herec herec2 : herci){
+                            if(herec2.getJmeno().equals(herec1)){
+                                herec2.pridatFilm();
+                                nalezeno = true;
+                                break;
+                            }
+                        }
+                        if(!nalezeno){
+                            herci.add(new Herec(herec1,1));
+                        }
+                    }
                 }
                 else{
                     animovaneFilmy.add(new FilmAnimovany(nazev, reziser, rokVydani,doporucenyVek));
@@ -89,7 +115,7 @@ public class FilmEditor {
         }
     }
 
-    public static void upravFilm(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy){
+    public static void upravFilm(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy, List<Herec> herci){
         String nazev;
         String herec;
         int volba;
@@ -162,7 +188,29 @@ public class FilmEditor {
                         System.out.print("    Zadej jméno herce (pro ukončení zápisu zadej 0)");
                         herec = InputChecker.upravJmeno(sc.nextLine());
                     }
+                    if(!vybranyFilm.SeznamHercu.isEmpty()){
+                        for (String herec1 : vybranyFilm.SeznamHercu) {
+                            for (Herec herec2 : herci) {
+                                if(herec1.equals(herec2.getJmeno())){
+                                    herec2.odstranitFilm();
+                                }
+                            }
+                        }
+                    }
                     vybranyFilm.setSeznamHercu(novySeznamHercu);
+                    boolean nalezeno2 = false;
+                    for (String herec1 : novySeznamHercu) {
+                        for (Herec herec2 : herci){
+                            if(herec2.getJmeno().equals(herec1)){
+                                herec2.pridatFilm();
+                                nalezeno2 = true;
+                                break;
+                            }
+                        }
+                        if(!nalezeno2){
+                            herci.add(new Herec(herec1,1));
+                        }
+                    }
                 break;
                 case 5:
                     System.out.println("    Současné hodnocení "+vybranyFilm.getHodnoceni());
@@ -181,8 +229,6 @@ public class FilmEditor {
                         case 0:
                             hraneFilmy.set(i, vybranyFilm);
                         break;
-                        case 9:
-                        break;
                         }
                         System.out.print(
                             "[1]   Upravit název\n"+
@@ -191,7 +237,6 @@ public class FilmEditor {
                             "[4]   Upravit seznam herců\n"+
                             "[5]   Upravit hodnocení\n"+
                             "[0]   Hotovo\n"+
-                            "[9]   Zrušit změny\n"+
                             "    Vyber akci: ");
                         volba=InputChecker.getInt(sc);
                     }
@@ -237,7 +282,29 @@ public class FilmEditor {
                             System.out.print("    Zadej jméno animátora (pro ukončení zápisu zadej 0)");
                             herec = InputChecker.upravJmeno(sc.nextLine());
                         }
+                        if(!vybranyFilm.SeznamHercu.isEmpty()){
+                            for (String herec1 : vybranyFilm.SeznamHercu) {
+                                for (Herec herec2 : herci) {
+                                    if(herec1.equals(herec2.getJmeno())){
+                                        herec2.odstranitFilm();
+                                    }
+                                }
+                            }
+                        }
                         vybranyFilm.setSeznamHercu(novySeznamHercu);
+                        boolean nalezeno2 = false;
+                        for (String herec1 : novySeznamHercu) {
+                            for (Herec herec2 : herci){
+                                if(herec2.getJmeno().equals(herec1)){
+                                    herec2.pridatFilm();
+                                    nalezeno2 = true;
+                                    break;
+                                }
+                            }
+                            if(!nalezeno2){
+                                herci.add(new Herec(herec1,1));
+                            }
+                        }
                     break;
                     case 5:
                         System.out.println("    Současné hodnocení "+vybranyFilm.getHodnoceni());
@@ -271,7 +338,6 @@ public class FilmEditor {
                         "[5]   Upravit hodnocení\n"+
                         "[6]   Upravit Doporučný věk\n"+
                         "[0]   Hotovo\n"+
-                        "[9]   Zrušit změny\n"+
                         "    Vyber akci: ");
                     volba=InputChecker.getInt(sc);
                 }
@@ -343,7 +409,7 @@ public class FilmEditor {
         }
     }
 
-    public static void odstranFilm(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy){
+    public static void odstranFilm(List<FilmAnimovany> animovaneFilmy, List<FilmHrany> hraneFilmy, List<Herec> herci){
         String nazev;
         int volba;
         int i=0;
@@ -374,6 +440,15 @@ public class FilmEditor {
                 System.out.print("[1]     Potvrď odstranění filmu "+hraneFilmy.get(i).getNazev()+": ");
                 volba = InputChecker.getInt(sc);
                 if(volba == 1){
+                    if(!hraneFilmy.get(i).SeznamHercu.isEmpty()){
+                        for (String herec : hraneFilmy.get(i).SeznamHercu) {
+                            for (Herec herec2 : herci) {
+                                if(herec.equals(herec2.getJmeno())){
+                                    herec2.odstranitFilm();
+                                }
+                            }
+                        }
+                    }
                 hraneFilmy.remove(i);
                 System.out.println("    Úspěšně odstraněno ");
                 }
@@ -382,6 +457,15 @@ public class FilmEditor {
                 System.out.print("[1]     Potvrď odstranění filmu "+animovaneFilmy.get(i).getNazev()+": ");
                 volba = InputChecker.getInt(sc);
                 if(volba == 1){
+                    if(!animovaneFilmy.get(i).SeznamHercu.isEmpty()){
+                        for (String herec : animovaneFilmy.get(i).SeznamHercu) {
+                            for (Herec herec2 : herci) {
+                                if(herec.equals(herec2.getJmeno())){
+                                    herec2.odstranitFilm();
+                                }
+                            }
+                        }
+                    }
                 animovaneFilmy.remove(i);
                 System.out.println("    Úspěšně odstraněno ");
             }
