@@ -10,7 +10,6 @@ public class App {
         int volba;
         Scanner sc = new Scanner(System.in);
         Databaze.nactiData(animovaneFilmy, hraneFilmy, herci);
-        
         do{
             System.out.print(
             "[1]   Přidání filmu\n"+

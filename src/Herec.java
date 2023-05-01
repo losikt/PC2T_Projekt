@@ -11,16 +11,21 @@ public class Herec {
 
     public static void vypsatFilmy(List<FilmAnimovany> animovaneFilmy, List<FilmHrany>hraneFilmy,String Jmeno)
     {
-        System.out.println("    Filmy s "+Jmeno+": ");
-        for (FilmHrany film : hraneFilmy) {
-            if(film.SeznamHercu.contains(Jmeno)){
-                System.out.println("      "+film.getNazev());
+        try{
+            System.out.println("    Filmy s "+Jmeno+": ");
+            for (FilmHrany film : hraneFilmy) {
+                if(film.SeznamHercu.contains(Jmeno)){
+                    System.out.println("      "+film.getNazev());
+                }
+            }
+            for (FilmAnimovany film : animovaneFilmy) {
+                if(film.SeznamHercu.contains(Jmeno)){
+                    System.out.println("      "+film.getNazev());
+                }
             }
         }
-        for (FilmAnimovany film : animovaneFilmy) {
-            if(film.SeznamHercu.contains(Jmeno)){
-                System.out.println("      "+film.getNazev());
-            }
+        catch(Exception e){
+            
         }
     }
 

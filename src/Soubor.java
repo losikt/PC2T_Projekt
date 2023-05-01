@@ -165,7 +165,7 @@ public class Soubor {
         } catch (FileNotFoundException e) {
             System.out.println("Soubor nenalezen :(");
         }
-        catch(InputMismatchException e){
+        catch(InputMismatchException | NumberFormatException e){
             System.out.println("Špatný formát souboru :()");
         }
     }
